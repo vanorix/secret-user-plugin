@@ -22,5 +22,45 @@
         ?>
  
     </form>
+
+    <div class="options">
+    	
+    	<?php $args = array(
+			'blog_id'      => $GLOBALS['blog_id'],
+			'role'         => '',
+			'role__in'     => array(),
+			'role__not_in' => array(),
+			'meta_key'     => '',
+			'meta_value'   => '',
+			'meta_compare' => '',
+			'meta_query'   => array(),
+			'date_query'   => array(),        
+			'include'      => array(),
+			'exclude'      => array(),
+			'orderby'      => 'login',
+			'order'        => 'ASC',
+			'offset'       => '',
+			'search'       => '',
+			'number'       => '',
+			'count_total'  => false,
+			'fields'       => 'all',
+			'who'          => '',
+		 ); 
+		$users = get_users( $args ); 
+
+		foreach($users as $user) {	?>
+			
+			<div><?php echo $user->user_login ?></div>
+
+    	<?php } ?>
+    </div>
+
+    <div class="options">
+    	<?php 
+    		$wp_list_table = new User_Table();
+    		$wp_list_table->prepare_items(); 
+    		$wp_list_table->display();?>
+
+    </div>
  
 </div><!-- .wrap -->

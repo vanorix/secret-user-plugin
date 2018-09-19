@@ -22,6 +22,10 @@ if ( ! defined( 'WPINC' ) ) {
      die;
 }
 
+if(!class_exists('WP_List_Table')){
+   require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
+}
+
 // Include the dependencies needed to instantiate the plugin.
 foreach ( glob( plugin_dir_path( __FILE__ ) . 'admin/*.php' ) as $file ) {
     include_once $file;
